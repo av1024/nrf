@@ -161,14 +161,11 @@ static uint8_t spi_fast_shift (uint8_t);
 
 void nrf_init(void);
 
-
-//void NRFConfig(NRFSetup *cfg);
-
 void nrf_rx_config(uint8_t * config_buf,
                    uint8_t *rx0_addr,
                    uint8_t *rx1_addr,
                    uint8_t *tx_addr); // setup RX mode. !!!Should be called before TX setup!!!
-void nrf_tx_config(uint8_t * addr); // Switch ***FROM RX*** to TX mode NB! call nrf_rx_config() first
+void nrf_tx_config(uint8_t * addr);   // Switch ***FROM RX*** to TX mode NB! call nrf_rx_config() first
 
 
 uint8_t nrf_command(uint8_t);   // write 1 byte
@@ -179,7 +176,7 @@ void nrf_write_register(uint8_t reg, uint8_t * value, uint8_t len);
 
 uint8_t nrf_send_completed(void);
 
-// send (PAYLOAD_WIDTH) bytes from buffer
+// send (len) bytes from buffer
 // return 1 on success, 0 if MAX_RT reached
 uint8_t nrf_send(uint8_t *value, uint8_t len);
 uint8_t nrf_data_available(void); // returns (pipe#+1) if data found, 0 if no data in pipe(s)
